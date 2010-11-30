@@ -1,7 +1,5 @@
 ========================================================================
-
 Django Uploadify-S3 (DUS3): Browser-Based Uploads to Amazon S3 Made Easy
-
 ========================================================================
 
 Overview
@@ -29,11 +27,11 @@ Background
 A general understanding of Uploadify and submitting browser-based
 uploads to Amazon S3 is helpful if not necessary:
 
-- Uploadify: 
-    http://www.uploadify.com/
+- Uploadify:
+  http://www.uploadify.com/
 
 - Browser-Based Uploads to Amazon S3: 
-    http://docs.amazonwebservices.com/AmazonS3/latest/dev/UsingHTTPPOST.html
+  http://docs.amazonwebservices.com/AmazonS3/latest/dev/UsingHTTPPOST.html
 
 
 Installation & Use
@@ -55,17 +53,16 @@ Installation & Use
    
    ``UploadifyS3()`` takes three optional parameters:
    
-      - ``uploadify_options``: A dictionary of Uploadify options.
-      - ``post_data``: A dictionary of POST variables that is used to
-            set the Uploadify scriptData option and eventually 
-            sent to AWS.
-      - ``conditions``: See conditions, below.
+   - ``uploadify_options``: A dictionary of Uploadify options.
+   - ``post_data``: A dictionary of POST variables that is used to
+     set the Uploadify scriptData option and eventually sent to AWS.
+   - ``conditions``: See conditions, below.
       
    These parameters are optional because DUS3 can in many cases pull
    all of its configuration data from your settings.py. The parameters
    override any values found in your settings file.
    
-5. Load the DUS3 template tags and insert them in your template:
+5. Load the DUS3 template tags and insert them in your template.
 
    Add this above any of the other tags to load the tag set::
       {% load uploadify_tags %}
@@ -99,15 +96,16 @@ in your view.
         
 In addition, DUS3 recognizes the following AWS S3 options:
 
-    ``AWS_ACCESS_KEY_ID`` - Required. Either set in settings or pass in.
-    ``AWS_SECRET_ACCESS_KEY`` - Required. Either set in settings or pass in.
-    ``AWS_BUCKET_NAME`` - Required. Either set in settings or pass in.
-    ``AWS_S3_SECURE_URLS`` - Set to False to force http instead of https.
-    ``AWS_BUCKET_URL`` - Shouldn't need. Default is calculated from bucket name.
-    ``AWS_DEFAULT_ACL`` - Default is ``private``.
-    ``AWS_DEFAULT_KEY_PATTERN`` - The S3 ``key`` param. Default is ``'${filename}'``.
-    ``AWS_DEFAULT_FORM_LIFETIME`` - Signed form expiration time in secs from now.
-
+===========================   ==================================================
+``AWS_ACCESS_KEY_ID``         Required. Either set in settings or pass in.
+``AWS_SECRET_ACCESS_KEY``     Required. Either set in settings or pass in.
+``AWS_BUCKET_NAME``           Required. Either set in settings or pass in.
+``AWS_S3_SECURE_URLS``        Set to False to force http instead of https.
+``AWS_BUCKET_URL``            Shouldn't need. Default is calculated from bucket name.
+``AWS_DEFAULT_ACL``           Default is ``private``.
+``AWS_DEFAULT_KEY_PATTERN``   The S3 ``key`` param. Default is ``'${filename}'``.
+``AWS_DEFAULT_FORM_LIFETIME`` Signed form expiration time in secs from now.
+===========================   ==================================================
 
 Conditions
 ----------
@@ -126,8 +124,9 @@ See: http://docs.amazonwebservices.com/AmazonS3/latest/dev/index.html?AccessPoli
 field name to a value object. Conditions are described by using different
 data types for the value object*:
 
+===============     ======================================================
 Value Data Type     Condition Applied
----------------     -----------------
+===============     ======================================================
 ``nil``             A starts-with test that will accept any value
 ``str``             An equality test using the given string
 ``list``            An equality test, against a value composed of all 
@@ -137,7 +136,8 @@ Value Data Type     Condition Applied
                     given as the ``value`` mapping
 ``slice``           A range test, where the range must lie between the
                     start and stop values of the slice object provided
-                    
+===============     ======================================================
+
 *The semantics of the conditions array were very much inspired by 
 James Murty's *Programming Amazon Web Services*.
 
