@@ -1,0 +1,11 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        /* Uploadify Setup */
+        $('#file_upload').uploadify(
+        {% autoescape off %}
+        {{ uploadify_options }}
+        {% endautoescape %}
+        );
+    });
+</script>
+<input id="file_upload" name="file_upload" type="file" />
