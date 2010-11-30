@@ -6,7 +6,7 @@ Overview
 --------
 
 This application aims to make it easy for you to add browser-based 
-uploads to Amazon S3 to your Django applications using the Uploadify
+uploads to Amazon S3 to your Django projects using the Uploadify
 jQuery plugin.
 
 DUS3 is configuration driven, meaning you don't need to add any 
