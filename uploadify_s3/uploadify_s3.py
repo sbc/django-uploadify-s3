@@ -135,7 +135,8 @@ def build_post_policy(expiration_time, conditions):
             
 def _uri_encode(str):
     try:
-        return quote_plus(str, safe='/~')
+        # The Uploadify flash component apparently decodes the scriptData once, so we need to encode twice here.
+        return quote_plus(quote_plus(str, safe='~'), safe='~')
     except:
         raise ValueError
 
