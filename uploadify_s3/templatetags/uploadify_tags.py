@@ -1,7 +1,5 @@
 from django import template
 from django.conf import settings
-import base64
-import hmac, sha
 
 register = template.Library()
 
