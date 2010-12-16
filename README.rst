@@ -2,6 +2,8 @@
 Django Uploadify-S3 (DUS3): Browser-Based Uploads to Amazon S3 Made Easy
 ========================================================================
 
+*Copyright (c) 2010, Sam Charrington (@samcharrington), http://geekfactor.charrington.com*
+
 Overview
 --------
 
@@ -12,6 +14,8 @@ jQuery plugin.
 DUS3 is configuration driven, meaning you don't need to add any 
 Uploadify or S3-specific code to your project to use these tools. 
 
+For a working demo application based on DUS3, please visit:
+https://github.com/sbc/django-uploadify-s3-example 
 
 Requirements
 ------------
