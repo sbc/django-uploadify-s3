@@ -1,0 +1,16 @@
+syntax: glob
+
+.DS_Store
+*.pyc
+*.pyo
+.installed.cfg
+.idea/*
+bin/*
+develop-eggs/*
+dist/*
+downloads/*
+eggs/*
+parts/*
+src/*.egg-info
+db/*
+search_index/*
