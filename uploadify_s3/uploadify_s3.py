@@ -12,8 +12,8 @@ UPLOADIFY_OPTIONS = ('auto', 'buttonImg', 'buttonText', 'cancelImg', 'checkScrip
 
 UPLOADIFY_METHODS = ('onAllComplete', 'onCancel', 'onCheck', 'onClearQueue', 'onComplete', 'onError', 'onInit', 'onOpen', 'onProgress', 'onQueueFull', 'onSelect', 'onSelectOnce', 'onSWFReady')
 
-PASS_THRU_OPTIONS = ('folder', 'fileExt', 'fileDesc')
-FILTERED_OPTIONS  = ('filename',)
+PASS_THRU_OPTIONS = ('folder', 'fileExt',)
+FILTERED_KEYS  = ('filename',)
 EXCLUDED_KEYS     = ('AWSAccessKeyId', 'policy', 'signature')
 
 # AWS Options
@@ -93,17 +93,23 @@ class UploadifyS3(object):
         return out
 
 def build_conditions(options, post_data, conditions):
+    # PASS_THRU_OPTIONS are Uploadify options that if set in the settings are 
+    # passed into the POST. As a result, a default policy condition is created here.
     for opt in PASS_THRU_OPTIONS:
         if opt in options and opt not in conditions:
             conditions[opt] = None
 
-    for opt in FILTERED_OPTIONS:
+    # FILTERED_KEYS are those created by Uploadify and passed into the POST on submit.
+    # As a result, a default policy condition is created here.
+    for opt in FILTERED_KEYS:
         if opt not in conditions:
             conditions[opt] = None
 
     conds = post_data.copy()
     conds.update(conditions)
 
+    # EXCLUDED_KEYS are those that are set by UploadifyS3 but need to be stripped out
+    # for the purposes of creating conditions.
     for key in EXCLUDED_KEYS:
         if key in conds:
             del conds[key]
